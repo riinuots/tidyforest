@@ -28,7 +28,7 @@ glm_tidyresult = function(mydata, dependent, explanatory){
     confint() %>%
     exp()  %>%
     broom::tidy() %>%  #confints() already puts it in a table, but tidy() makes the column names a bit better
-    rename(variable = .rownames,
+    dplyr::rename(variable = .rownames,
            or_lower = X2.5..,
            or_upper = X97.5..) %>%
     filter(variable!='(Intercept)')
