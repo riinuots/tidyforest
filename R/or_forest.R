@@ -1,9 +1,28 @@
+
+#' Create a logistic regression forest plot with a table on the left.
+#'
+#' @param mydata
+#' @param dependent
+#' @param explanatory
+#' @param explanatory_names
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' mydata = data_melanoma()
+#' dependent = 'status.factor'
+#' explanatory = c('sex.factor', 'ulcer.factor', 'stage.factor')
+#' explanatory_names = c('Gender', 'Ulceration', 'Stage (thickness)')
+#'
+#' or_forest(mydata, dependent, explanatory, explanatory_names)
+
 or_forest = function(mydata,
                      dependent,
                      explanatory,
                      explanatory_names){
 
-  devtools::use_package("gridExtra")
+  #devtools::use_package("gridExtra")
 
    #mydata = data_melanoma()
    #dependent = 'status.factor'

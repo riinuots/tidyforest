@@ -1,8 +1,8 @@
 glm_tidyresult = function(mydata, dependent, explanatory){
 
-  devtools::use_package("tidyverse")
-  devtools::use_package("forcats")
-  devtools::use_package("broom")
+  #devtools::use_package("tidyverse")
+  #devtools::use_package("forcats")
+  #devtools::use_package("broom")
   library(tidyverse)
   library(forcats)
 

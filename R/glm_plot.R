@@ -1,7 +1,7 @@
 or_plot = function(my_result){
 
-  devtools::use_package("tidyverse")
-  devtools::use_package("forcats")
+  #devtools::use_package("tidyverse")
+  #devtools::use_package("forcats")
   library(tidyverse)
   library(forcats)
 
