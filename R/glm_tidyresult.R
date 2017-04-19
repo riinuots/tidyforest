@@ -20,7 +20,7 @@ glm_tidyresult = function(mydata, dependent, explanatory){
     broom::tidy() %>%
     mutate(or = exp(estimate)) %>%
     mutate(p.label = ifelse(p.value<0.001, '<0.001', round(p.value, 3) %>% formatC(3, format='f')) ) %>%
-    select(variable = term, or, p.label, p.value) %>%
+    dplyr::select(variable = term, or, p.label, p.value) %>%
     filter(variable!='(Intercept)')
 
   # confidence intervals have to be extracted separately
@@ -40,11 +40,11 @@ glm_tidyresult = function(mydata, dependent, explanatory){
   all_levels = myfit$xlevels %>%
     enframe() %>%
     unnest() %>%
-    mutate(variable = paste0(name, value))
+    dplyr::mutate(variable = paste0(name, value))
 
 
   my_result = full_join(all_levels, my_result, by='variable') %>%
-    mutate(or.label = ifelse(is.na(or),
+    dplyr::mutate(or.label = ifelse(is.na(or),
                              '1.0 (Reference)',
                              paste0(or %>% round(2) %>% formatC(2, format='f') , #else
                                     ' (',
