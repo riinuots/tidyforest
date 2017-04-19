@@ -5,7 +5,8 @@ or_plot = function(my_result){
   library(tidyverse)
   library(forcats)
 
-  or_plot = my_result %>%
+  #or_plot =
+  my_result %>%
     mutate(variable = forcats::fct_inorder(variable)) %>% #make variable into factor (otherwise ggplot will make alphabetically)
     ##start ggplot()
     ggplot(aes(x=forcats::fct_rev(variable),
@@ -41,6 +42,6 @@ or_plot = function(my_result){
           ,panel.grid.minor = element_blank()
     )
 
-  or_plot
+  #or_plot
 
 }
