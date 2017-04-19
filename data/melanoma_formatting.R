@@ -2,6 +2,7 @@ data_melanoma = function(){
 
 devtools::use_package("tidyverse")
   devtools::use_package("forcats")
+  devtools::use_package("boot")
   library(tidyverse)
   library(forcats)
 
