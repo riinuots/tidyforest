@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.1.0)
 Imports: tidyverse,
     forcats,
     gridExtra,
