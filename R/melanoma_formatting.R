@@ -12,7 +12,7 @@ mydata$status %>%
              'Alive' = '2',
              'Died - other causes' = '3') %>%
   fct_relevel('Alive') -> # move Alive to front (first factor level)
-  mydata$status.factor    # so odds ratio will be relative to that
+  mydata$status.factor    # so the odds ratios will be relative to that
 
 mydata$sex %>%
   factor() %>%
