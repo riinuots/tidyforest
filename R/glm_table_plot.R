@@ -1,4 +1,4 @@
-or_table_plot = function(my_result , explanatory_names){
+or_table_plot = function(my_result , explanatory_names = explanatory){
 
   hjust_table = data_frame(my_table = c('name', 'value', 'or.label', 'p.label'),
                            my_hjust = c(1,0,0.5,1),

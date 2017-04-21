@@ -15,19 +15,14 @@
 #' explanatory = c('sex.factor', 'ulcer.factor', 'stage.factor')
 #' explanatory_names = c('Gender', 'Ulceration', 'Stage (thickness)')
 #'
-#' or_forest(mydata, dependent, explanatory, explanatory_names)
+#' tidyforest(mydata, dependent, explanatory, explanatory_names)
 
-or_forest = function(mydata,
+tidyforest = function(mydata,
                      dependent,
                      explanatory,
-                     explanatory_names){
+                     explanatory_names = explanatory){
 
   #devtools::use_package("gridExtra")
-
-   #mydata = data_melanoma()
-   #dependent = 'status.factor'
-   #explanatory = c('sex.factor', 'ulcer.factor', 'stage.factor')
-   #explanatory_names = c('Gender', 'Ulceration', 'Stage (thickness)')
 
   glm_result = glm_tidyresult(mydata, dependent, explanatory)
 

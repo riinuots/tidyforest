@@ -1,12 +1,11 @@
 Package: tidyforest
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A tidyverse workflow for running and presenting a logistic regression model in R.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: healthyr.surgicalinformatics.org
+Maintainer: Riinu Ots <R.Ots@ed.ac.uk>
+Description: This workflow shows how to: rename/create factor levels; run and format a logistric regression model; create a forest plot with a side table.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.1.0)

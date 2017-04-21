@@ -12,12 +12,90 @@ knitr::opts_chunk$set(
 )
 ```
 
+# tidyforest
 
-This tiny "package" presents a tidyverse workflow of 
+`tidyforest` contains a [tidyverse](http://tidyverse.org/) workflow for running and presenting a logistic regression model in R. This is organised into 5 functions:
 
-* renaming/creating factor levels: `melanoma_formatting()`
-* including any number of variables in a logistic regression model and formatting the output in a tidy-broom manner: `glm_tidyresult()`
-* create a forest plot, including a table with the odds ratios and p-values:
-  + a table as a graphical object: `or_table_plot()`
-  + a forest plot: `or_plot()`
-* a combination function that calls all of the above in order: `or_forest()`
+* `melanoma_formatting()` - renaming/creating factor levels. This formats the `boot::melanoma` dataset which can then be  used as example input for the following functions.
+* `glm_tidyresult()` - running a logistic regression model and formatting the output into a nice dataframe (glm - generalized linear models).
+* `or_plot()` - creates a forest plot (or - odds ratios).
+* `or_table_plot()` - creates a graphical table aligned exactly to the forest plot.
+* `tidyforest()` - combines all of the above, and puts `or_plot()` and `or_table_plot` side by side.
+
+
+# Install
+
+`install.packages("devtools")`
+
+and
+
+`devtools::install_github("riinuots/tidyforest")`
+
+# Use
+
+```{r final_output, warning = FALSE, message = FALSE, results = 'hide'}
+library(tidyforest)
+
+mydata = data_melanoma()
+dependent = 'status.factor' 
+explanatory = c('sex.factor', 'ulcer.factor', 'stage.factor')
+explanatory_names = c('Gender', 'Ulceration', 'Stage (thickness)')
+
+tidyforest(mydata, dependent, explanatory, explanatory_names)
+
+```
+
+Note that outcome variable ("dependent") actually includes 3 levels: "Alive", "Died", and "Died of other causes".
+This example lumps the latter categories into once which might not be desired.
+You should always plot your data in an exploratory way (e.g. boxplots, barplots) before running advanced statistical models on it.
+
+These warnings:
+
+```
+Warning messages:
+1: Removed 21 rows containing missing values (geom_text). 
+2: Removed 3 rows containing missing values (geom_errorbar). 
+3: Removed 3 rows containing missing values (geom_point). 
+4: Removed 3 rows containing missing values (geom_text). 
+```
+
+can safely be ignored, as they refer to the fact that the reference levels do not have a point and an errorbar (does not make sense), or that the explanatory_names are only printed once for the whole group (not on each line).
+
+## Or call the functions separetely
+
+
+```{r example_data, warning = FALSE, message = FALSE}
+library(tidyforest)
+
+mydata = data_melanoma()
+
+mydata %>% str() #prints the structure and first few observations
+
+```
+
+
+```{r, warning = FALSE, message = FALSE}
+
+dependent = 'status.factor'
+explanatory = c('sex.factor', 'ulcer.factor', 'stage.factor')
+explanatory_names = c('Gender', 'Ulceration', 'Stage (thickness)') #this is optional
+   
+glm_result = glm_tidyresult(mydata, dependent, explanatory)
+
+```
+
+![](glm_result.png)
+
+```{r forest_plot, warning = FALSE, message = FALSE, fig.width = 3}
+
+or_plot(glm_result)
+
+```
+
+```{r or_table, warning = FALSE, message = FALSE, fig.width = 6}
+
+or_table_plot(glm_result, explanatory_names)
+
+```
+
+
