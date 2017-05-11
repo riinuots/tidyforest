@@ -20,7 +20,7 @@ glm_tidyresult = function(mydata, dependent, explanatory){
 
   #extracting ORs and p values
   my_result = myfit %>%
-    broom::tidy(conf.int = T, exponentiate = T) %>%
+    broom::tidy(conf.int = TRUE, exponentiate = TRUE) %>%
     mutate(p.label = ifelse(p.value<0.001, '<0.001', round(p.value, 3) %>% formatC(3, format='f')) ) %>%
     dplyr::select(variable = term, or = estimate, p.label, p.value, conf.low, conf.high) %>%
     filter(variable != '(Intercept)')
