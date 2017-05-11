@@ -13,7 +13,7 @@ or_plot = function(my_result){
                y = or))+
     geom_hline(yintercept = 1,
                colour = 'grey')+ #1.0 reference line
-    geom_errorbar(aes(ymin = or_lower, ymax = or_upper),
+    geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
                   width  = 0.2,
                   colour = '#41ae76',
                   size   = 0.9) + #OR lower-upper errorbars
